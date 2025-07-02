@@ -36,8 +36,8 @@ async def get_avg_age(
 
     # Query both hospitals
     urls = [
-        f"http://localhost:8001/query?condition={condition}",
-        f"http://localhost:8002/query?condition={condition}"
+        f"https://hospital-a-service-production.up.railway.app/query?condition={condition}",
+        f"https://hospital-b-service-production.up.railway.app/query?condition={condition}"
     ]
 
     results = []
