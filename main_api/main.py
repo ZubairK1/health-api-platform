@@ -14,7 +14,6 @@ app.add_middleware(
 )
 
 
-=
 buyers = {
     "buyer_1": {"tokens": 10},
     "buyer_2": {"tokens": 5}
