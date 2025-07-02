@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 import httpx
-from utils import apply_differential_privacy
+from main_api.utils import apply_differential_privacy
+
 
 app = FastAPI()
 buyers = {
