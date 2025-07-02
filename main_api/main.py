@@ -1,9 +1,20 @@
 from fastapi import FastAPI, Query
 import httpx
 from main_api.utils import apply_differential_privacy
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+=
 buyers = {
     "buyer_1": {"tokens": 10},
     "buyer_2": {"tokens": 5}
