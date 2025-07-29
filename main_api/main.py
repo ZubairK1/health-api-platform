@@ -15,8 +15,8 @@ app.add_middleware(
 
 
 buyers = {
-    "buyer_1": {"tokens": 10},
-    "buyer_2": {"tokens": 5}
+    "buyer_1": {"tokens": 1000},
+    "buyer_2": {"tokens": 1000}
 }
 
 hospitals = {
@@ -31,7 +31,7 @@ async def get_avg_age(
 ):
     # Check if buyer exists
     if buyer_id not in buyers:
-        return {"error": "Buyer ID not recognised"}
+        return {"error": "Buyer ID not found"}
 
     # Check token balance
     if buyers[buyer_id]["tokens"] <= 0:
@@ -39,12 +39,12 @@ async def get_avg_age(
 
     # Deduct one token
     buyers[buyer_id]["tokens"] -= 1
-    # Distribute tokens to hospitals (equal split)
+    # Distribute tokens to hospitals as payment
     hospitals["Hospital_A"]["tokens"] += 0.5
     hospitals["Hospital_B"]["tokens"] += 0.5
 
 
-    # Query both hospitals
+    # Query both hospitals using railway APIs
     urls = [
         f"https://hospital-a-service-production.up.railway.app/query?condition={condition}",
         f"https://hospital-b-service-production.up.railway.app/query?condition={condition}"
